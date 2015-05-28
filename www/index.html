@@ -26,11 +26,10 @@
 
 		<ion-content>
 			<div class="container padding">
-				<!-- <ul> -->
-					<div class="item item-avatar" ng-repeat="image in images">
-						<img ng-src="{{ image.url }}" width="150">
-					</div>
-				<!-- </ul> -->
+				<ion-item class="item-avatar" ng-repeat="image in images">
+					<img ng-src="{{ image.url }}" width="150">
+					<button class="button button-clear icon ion-close-circled button-remove-line"></button>
+				</ion-item>
 			</div>
 		</ion-content>
 
