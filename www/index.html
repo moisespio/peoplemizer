@@ -26,9 +26,12 @@
 
 		<ion-content>
 			<div class="container padding">
-				<ion-item class="item-avatar" ng-repeat="image in images">
-					<img ng-src="{{ image.url }}" width="150">
-					<button class="button button-clear icon ion-close-circled button-remove-line"></button>
+				<ion-item class="item-avatar item-icon-right item-container" ng-repeat="image in images">
+					<img ng-src="{{ image.url }}" class="photo">
+					<label class="item-input">
+						<input type="text" placeholder="First Name">
+					</label>
+					<button class="button button-clear icon ion-close-circled button-remove-line" ng-click="remove($index)"></button>
 				</ion-item>
 			</div>
 		</ion-content>

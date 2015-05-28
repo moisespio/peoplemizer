@@ -22,5 +22,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 .button-remove-line {
-	float: right;
+	top: 12px;
+}
+
+.item-input {
+	padding: 0;
+	margin: 0;
+}
+
+.photo {
+
 }

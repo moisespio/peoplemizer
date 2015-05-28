@@ -2,9 +2,7 @@ app.controller('main-controller', function($scope, Camera) {
 	$scope.images = new Array();
 
 	$scope.getPhoto = function() {
-		var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1  && document.URL.indexOf( 'local' ) === -1;
-		console.log(app);
-		if(!app){
+		if(!window.cordova){
 			$scope.images.push({
 				url :'img/placeholder.gif'
 			});
@@ -17,6 +15,10 @@ app.controller('main-controller', function($scope, Camera) {
 				console.err(err);
 			});
 		}
+	};
+
+	$scope.remove = function ($index) {
+		$scope.images.splice($index, 1);
 	};
 
 });
