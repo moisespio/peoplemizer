@@ -24,6 +24,21 @@ $stable: #f8f8f8 !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.tutorial {
+	position: absolute;
+	bottom: 200%;
+	margin: 0;
+	left: 50%;
+	.item {
+		color: white;
+		text-align: center;
+		&:after {
+			display: none;
+		}
+	}
+	transform: translateX(-50%);
+}
+
 .bar {
 	border: 0;
 	.title {
@@ -64,6 +79,10 @@ $stable: #f8f8f8 !default;
 }
 
 .footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
 	&.active {
 		.take-photo {
 			transform: translateX(0);

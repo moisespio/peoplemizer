@@ -39,6 +39,18 @@
 		</ion-content>
 
 		<div class="footer" ng-class="{ 'active' : people.length > 1 && showRandomButton }">
+			<div class="tutorial card">
+				<div class="item item-text-wrap" ng-show="people.length == 0">
+					First of all, take a picture from someone.
+				</div>
+				<div class="item item-text-wrap" ng-show="people.length == 1">
+					Good start, but we need at least two people to randomize. Try adding one more picture.
+				</div>
+				<div class="item item-text-wrap" ng-show="people.length == 2">
+					This is great! Now you can randomize between these two people or add more to join the random.
+				</div>
+			</div>
+
 			<button class="ion-camera take-photo red-gradient" ng-click="getPhoto()"></button>
 			<button class="ion-shuffle show-result orange-gradient" ng-click="showResult()"></button>
 		</div>

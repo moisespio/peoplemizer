@@ -7482,6 +7482,20 @@ a.button {
   opacity: 0;
   transition-duration: 0s; }
 
+.tutorial {
+  position: absolute;
+  bottom: 200%;
+  margin: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%); }
+  .tutorial .item {
+    color: white;
+    text-align: center; }
+    .tutorial .item:after {
+      display: none; }
+
 .bar {
   border: 0; }
   .bar .title {
@@ -7516,16 +7530,21 @@ a.button {
   font-size: 24px;
   color: #A08FEC !important; }
 
-.footer.active .take-photo {
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0); }
-.footer.active .show-result {
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
-  visibility: visible; }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px; }
+  .footer.active .take-photo {
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0); }
+  .footer.active .show-result {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+    visibility: visible; }
 
 .take-photo {
   width: 100px;
