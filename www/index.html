@@ -20,25 +20,42 @@
 </head>
 <body ng-app="peoplemizer">
 	<ion-pane ng-controller="main-controller">
-		<ion-header-bar class="bar-stable">
+		<ion-header-bar class="purple-gradient">
 			<h1 class="title">Peoplemizer</h1>
 		</ion-header-bar>
 
 		<ion-content>
 			<div class="container padding">
-				<ion-item class="item-avatar item-icon-right item-container" ng-repeat="image in images">
-					<img ng-src="{{ image.url }}" class="photo">
-					<label class="item-input">
-						<input type="text" placeholder="First Name">
-					</label>
-					<button class="button button-clear icon ion-close-circled button-remove-line" ng-click="remove($index)"></button>
-				</ion-item>
+				<div class="list card">
+					<ion-item class="item-avatar item-icon-right item-container" ng-repeat="person in people">
+						<img ng-src="{{ person.url }}" class="photo">
+						<label class="item-input">
+							<input type="text" placeholder="Name" class="item-input-field" ng-model="person.name" ng-blur="setRandomButtonState()">
+						</label>
+						<button class="button button-clear icon ion-close-circled button-remove-line" ng-click="remove($index)"></button>
+					</ion-item>
+				</div>
 			</div>
 		</ion-content>
 
-		<ion-footer-bar class="bar-balanced" ng-click="getPhoto()">
-			<div class="title">C&#xE2;mera</div>
-		</ion-footer-bar>
+		<div class="footer" ng-class="{ 'active' : people.length > 1 && showRandomButton }">
+			<button class="ion-camera take-photo red-gradient" ng-click="getPhoto()"></button>
+			<button class="ion-shuffle show-result orange-gradient" ng-click="showResult()"></button>
+		</div>
+
+		<script id="result.html" type="text/ng-template">
+			<div class="modal" ng-class="{ 'show-loader' : showLoader }">
+				<button class="button button-clear ion-close-round back-button" ng-click="closeResult()"></button>
+				<ion-content>
+					<ion-spinner icon="ripple" class="loader"></ion-spinner>
+
+					<div class="result">
+						<img ng-src="{{ selectedPersonPhoto.url }}" class="selected-person-photo">
+						<h2 class="title selected-person-title">{{ selectedPersonPhoto.name }}</h2>
+					</div>
+				</ion-content>
+			</div>
+		</script>
 
 	</ion-pane>
 </body>

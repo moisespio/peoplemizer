@@ -2,10 +2,23 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
+var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 9',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -18,6 +31,7 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
+    .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
