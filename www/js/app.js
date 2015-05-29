@@ -1,19 +1,17 @@
 var app = angular.module('peoplemizer', ['ionic']);
 
-var WPResolution = function () {
-	if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-		var msViewportStyle = document.createElement("style");
-		msViewportStyle.appendChild(
-			document.createTextNode("@-ms-viewport{width:auto!important}")
-		);
 
-		document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-	};
-};
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
 
 app.run(function($ionicPlatform) {
-	WPResolution();
-
 	$ionicPlatform.ready(function() {
 		if (!window.cordova) return;
 
