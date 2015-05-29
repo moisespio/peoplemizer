@@ -21,6 +21,7 @@ app.controller('main-controller', function($scope, $ionicModal, Camera) {
 
 	$scope.closeResult = function () {
 		$scope.result.hide();
+		$scope.showLoader = true;
 	};
 
 	$scope.getPhoto = function() {
