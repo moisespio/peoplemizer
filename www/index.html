@@ -16,17 +16,67 @@
 
 	<script src="js/app.js"></script>
 	<script src="js/services/camera-service.js"></script>
-	<script src="js/controllers/main-controller.js"></script>
+	<script src="js/services/person-service.js"></script>
+	<script src="js/controllers/all-controller.js"></script>
+	<script src="js/controllers/about-controller.js"></script>
+	<script src="js/controllers/home-controller.js"></script>
 </head>
 <body ng-app="peoplemizer">
-	<ion-pane ng-controller="main-controller">
-		<ion-header-bar class="purple-gradient">
-			<h1 class="title">Peoplemizer</h1>
-		</ion-header-bar>
+	<ion-pane>
+		<ion-nav-view>
+			<script type="text/ng-template" id="home.html">
+				<ion-view>
+					<ion-content padding="true" scroll="false">
+						<h1 class="main-color app-name">Peoplenizer</h1>
+						<h3 class="about">Take pictures and randomize one of your friends.</h3>
 
-		<ion-content>
+						<button class="button button-clear button-calm button-start" ng-click="getPhoto()">Start</button>
+					</ion-content>
+				</ion-view>
+			</script>
+
+			<script type="text/ng-template" id="about-the-person.html">
+				<ion-view ng-class="{ 'show-tooltip' : showTooltip }">
+					<ion-content padding="true" scroll="true" class="about-the-person">
+						<div class="photo-mask">
+							<img ng-src="{{ currentPerson.url }}" class="selected-person-photo">
+						</div>
+
+						<label class="item-input user-name-input">
+							<div class="tooltip">
+								<p>Now it’s time to give us the name of this person.</p>
+							</div>
+
+							<input type="text" placeholder="Name" class="item-input-field" ng-model="currentPerson.name" ng-focus="setTooltipState(false)" ng-blur="setRandomButtonState()">
+						</label>
+
+						<a href="#all-the-people" class="button button-clear button-calm button-save">Save</a>
+					</ion-content>
+				</ion-view>
+			</script>
+
+			<script type="text/ng-template" id="all-the-people.html">
+				<ion-view ng-class="{ 'show-tooltip' : showTooltip }">
+					<ion-content padding="true" scroll="true" class="all-the-people">
+						<ul class="people">
+							<li ng-repeat="person in people">
+								<img ng-src="{{ person.url }}" class="selected-person-photo">
+								<h4>{{ person.name }}</h4>
+							</li>
+							<li>
+								<button class="add-person" ng-click="getPhoto()"></button>
+							</li>
+						</ul>
+
+						<a href="#about-the-person" class="button button-clear button-calm">Peoplenize</a>
+					</ion-content>
+				</ion-view>
+			</script>
+		</ion-nav-view>
+
+		<ion-content scroll="false">
 			<div class="container padding">
-				<div class="list card">
+				<!-- <div class="list card">
 					<ion-item class="item-avatar item-icon-right item-container" ng-repeat="person in people">
 						<img ng-src="{{ person.url }}" class="photo">
 						<label class="item-input">
@@ -34,11 +84,11 @@
 						</label>
 						<button class="button button-clear icon ion-close-circled button-remove-line" ng-click="remove($index)"></button>
 					</ion-item>
-				</div>
+				</div> -->
 			</div>
 		</ion-content>
 
-		<div class="footer" ng-class="{ 'active' : people.length > 1 && showRandomButton }">
+		<!-- <div class="overlay">
 			<div class="tutorial card">
 				<div class="item item-text-wrap" ng-show="people.length == 0">
 					First of all, take a picture from someone.
@@ -50,10 +100,12 @@
 					This is great! Now you can randomize between these two people or add more to join the random.
 				</div>
 			</div>
+		</div> -->
 
+		<!-- <div class="footer" ng-class="{ 'active' : people.length > 1 && showRandomButton }">
 			<button class="ion-camera take-photo red-gradient" ng-click="getPhoto()"></button>
 			<button class="ion-shuffle show-result orange-gradient" ng-click="showResult()"></button>
-		</div>
+		</div> -->
 
 		<script id="result.html" type="text/ng-template">
 			<div class="modal" ng-class="{ 'show-loader' : showLoader }">

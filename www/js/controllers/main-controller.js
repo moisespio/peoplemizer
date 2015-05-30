@@ -35,9 +35,9 @@ app.controller('main-controller', function($scope, $ionicModal, Camera) {
 			Camera.getPicture({
 				allowEdit : false,
 				targetWidth: 250,
-  				targetHeight: 250,
-  				saveToPhotoAlbum: false
-  			}).then(function(imageURI) {
+				targetHeight: 250,
+				saveToPhotoAlbum: false
+			}).then(function(imageURI) {
 				$scope.people.push({
 					url : imageURI
 				});
