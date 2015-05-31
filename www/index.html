@@ -60,7 +60,9 @@
 					<ion-content padding="true" scroll="true" class="all-the-people">
 						<ul class="people">
 							<li ng-repeat="person in people">
-								<img ng-src="{{ person.url }}" class="selected-person-photo">
+								<div class="mask">
+									<img ng-src="{{ person.url }}" class="selected-person-photo">
+								</div>
 								<h4>{{ person.name }}</h4>
 							</li>
 							<li>

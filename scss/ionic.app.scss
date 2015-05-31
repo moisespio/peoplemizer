@@ -340,12 +340,17 @@ body {
 			font-family: 'San Francisco Light';
 			transform: translateY(-50%) translateX(-50%)
 		}
-		img {
+		.mask {
 			display: block;
 			width: 110px;
 			height: 110px;
 			border-radius: 50%;
 			opacity: .3;
+			overflow: hidden;
+			margin: auto;
+		}
+		img {
+			width: 100%;
 		}
 	}
 	.add-person {

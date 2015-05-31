@@ -7818,12 +7818,16 @@ body {
       -webkit-transform: translateY(-50%) translateX(-50%);
           -ms-transform: translateY(-50%) translateX(-50%);
               transform: translateY(-50%) translateX(-50%); }
-    .all-the-people li img {
+    .all-the-people li .mask {
       display: block;
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      opacity: .3; }
+      opacity: .3;
+      overflow: hidden;
+      margin: auto; }
+    .all-the-people li img {
+      width: 100%; }
   .all-the-people .add-person {
     width: 110px;
     height: 110px;
