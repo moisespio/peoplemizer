@@ -82,3 +82,25 @@ app.run(function($ionicPlatform) {
 		}
 	});
 })
+
+app.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/')
+
+	$stateProvider.state('home', {
+		url: '/',
+		controller: 'home-controller',
+		templateUrl: 'home.html'
+	})
+
+	$stateProvider.state('about-the-person', {
+		url: '/about-the-person',
+		controller: 'about-controller',
+		templateUrl: 'about-the-person.html'
+	})
+
+	$stateProvider.state('all-the-people', {
+		url: '/all-the-people',
+		controller: 'all-controller',
+		templateUrl: 'all-the-people.html'
+	})
+});
