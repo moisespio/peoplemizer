@@ -33,19 +33,26 @@ app.controller('main-controller', function($scope, $ionicModal, Camera) {
 			focusInput();
 		} else {
 			Camera.getPicture({
-				allowEdit : false,
-				targetWidth: 250,
-  				targetHeight: 250,
-  				saveToPhotoAlbum: false
   			}).then(function(imageURI) {
 				$scope.people.push({
 					url : imageURI
 				});
 
 				focusInput();
+				var tempStr = '{"people":[';
+				for (var i = 0; i < $scope.people.length; i++) {
+					tempStr += $scope.people[i].url;// +(i < $scope.people.length-1?',':'');
+					if(i < $scope.people.length - 1){
+						tempStr +=',';
+					}
+				}
+				tempStr += ']}';
+				alert(tempStr);
+				window.localStorage.setItem('people', tempStr);
 			}, function(err) {
 				console.err(err);
 			});
+			focusInput();
 		}
 	};
 

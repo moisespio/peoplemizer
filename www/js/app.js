@@ -66,9 +66,19 @@ app.run(function($ionicPlatform) {
 			}else{
 				window.localStorage.setItem('first', 1);
 			}
+
+			// window.localStorage.setItem('people', JSON.stringify($scope.people));
 			// AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 			// AdMob.showInterstitial();
 			AdMob.createBanner( {adId: admobid.banner,position: AdMob.AD_POSITION.BOTTOM_CENTER,autoShow: true,adSize:AdMob.AD_SIZE.FULL_BANNER} );
+		}
+		// alert(window.localStorage.getItem('people'));
+		var people = window.localStorage.getItem('people');
+		// alert(JSON.parse('"'+people+'"'));
+		if(people){
+			alert(people);
+			alert(people.people);
+			alert(JSON.parse(people));
 		}
 	});
 })
