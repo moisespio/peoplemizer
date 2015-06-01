@@ -66,9 +66,41 @@ app.run(function($ionicPlatform) {
 			}else{
 				window.localStorage.setItem('first', 1);
 			}
+
+			// window.localStorage.setItem('people', JSON.stringify($scope.people));
 			// AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 			// AdMob.showInterstitial();
 			AdMob.createBanner( {adId: admobid.banner,position: AdMob.AD_POSITION.BOTTOM_CENTER,autoShow: true,adSize:AdMob.AD_SIZE.FULL_BANNER} );
 		}
+		// alert(window.localStorage.getItem('people'));
+		var people = window.localStorage.getItem('people');
+		// alert(JSON.parse('"'+people+'"'));
+		if(people){
+			// alert(people);
+			// alert(people.people);
+			// alert(JSON.parse(people));
+		}
 	});
 })
+
+app.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/')
+
+	$stateProvider.state('home', {
+		url: '/',
+		controller: 'home-controller',
+		templateUrl: 'home.html'
+	})
+
+	$stateProvider.state('about-the-person', {
+		url: '/about-the-person',
+		controller: 'about-controller',
+		templateUrl: 'about-the-person.html'
+	})
+
+	$stateProvider.state('all-the-people', {
+		url: '/all-the-people',
+		controller: 'all-controller',
+		templateUrl: 'all-the-people.html'
+	})
+});
